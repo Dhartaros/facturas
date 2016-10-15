@@ -3,28 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Pólux Click - Sistema de Facturas</title>
-	<style>
-		img { max-width: 8em; }
-		table { border-collapse:collapse;border-spacing:0; }
-		#concepto table { width: 90%;}
-		#concepto table td {
-			font-family:Arial, sans-serif;
-			font-size:14px;padding:10px 20px;
-			border-style:solid;border-width:1px;
-			overflow:hidden;
-			word-break:normal;
-		}
-		#concepto table th {
-			font-family:Arial, sans-serif;
-			font-size:14px;
-			font-weight:normal;
-			padding:10px 20px;
-			border-style:solid;
-			border-width:1px;
-			overflow:hidden;
-			word-break:normal;
-		}
-	</style>
+	<link rel="shortcut icon" href='{{asset("favicon.ico")}}'>
+	<link rel="stylesheet" href='{{asset("css/styles.css")}}'>
 </head>
 <body>
 	<div id="info_polux">
@@ -46,6 +26,7 @@
 		</table>
 	</div>
 	<div id="concepto">
+		<?php $precio1 = $precio2 = $precio3 = 0 ?>
 		<table>
 			<thead>
 				<tr>
@@ -57,18 +38,36 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>{{$concepto}}</td>
-					<td>${{$precio_unitario}}.00</td>
-					<td>{{$cantidad}}</td>
-					<?php $precio = $precio_unitario*$cantidad ?>
-					<td>${{$precio}}.00</td>
+					<td>{{$concepto['concepto1']['concepto']}}</td>
+					<td>${{$concepto['concepto1']['precio_unitario']}}.00</td>
+					<td>{{$concepto['concepto1']['cantidad']}}</td>
+					<?php $precio1 = $concepto['concepto1']['precio_unitario']*$concepto['concepto1']['cantidad'] ?>
+					<td>${{$precio1}}.00</td>
 				</tr>
+				@if($concepto['concepto2']['concepto'] != "")
+				<tr>
+					<td>{{$concepto['concepto2']['concepto']}}</td>
+					<td>${{$concepto['concepto2']['precio_unitario']}}.00</td>
+					<td>{{$concepto['concepto2']['cantidad']}}</td>
+					<?php $precio2 = $concepto['concepto2']['precio_unitario']*$concepto['concepto2']['cantidad'] ?>
+					<td>${{$precio2}}.00</td>
+				</tr>
+				@endif
+				@if($concepto['concepto3']['concepto'] != "")
+				<tr>
+					<td>{{$concepto['concepto3']['concepto']}}</td>
+					<td>${{$concepto['concepto3']['precio_unitario']}}.00</td>
+					<td>{{$concepto['concepto3']['cantidad']}}</td>
+					<?php $precio3 = $concepto['concepto3']['precio_unitario']*$concepto['concepto3']['cantidad'] ?>
+					<td>${{$precio3}}.00</td>
+				</tr>
+				@endif
 			</tbody>
 		</table>
 	</div>
 	<div id="costo">
-		
+		<?php $total = $precio1+$precio2+$precio3 ?>
+		<p>Total: ${{$total}}.00</p>
 	</div>
-
 </body>
 </html>

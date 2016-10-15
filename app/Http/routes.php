@@ -14,4 +14,4 @@
 Route::get('/', function () {
     return view('app');
 });
-Route::get('/factura','pdfController@pdf');
+Route::get('/recibo','pdfController@pdf');

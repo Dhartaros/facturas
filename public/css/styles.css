@@ -1,0 +1,32 @@
+.letras_blancas { color: white; }
+.polux { background-color: #348E63; }
+#concepto table { width: 90%; margin-bottom: 1em; }
+#concepto table td {
+	font-family:Arial, sans-serif;
+	font-size:14px;padding:10px 20px;
+	border-style:solid;border-width:1px;
+	overflow:hidden;
+	word-break:normal;
+}
+#concepto table th {
+	font-family:Arial, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	padding:10px 20px;
+	border-style:solid;
+	border-width:1px;
+	overflow:hidden;
+	word-break:normal;
+}
+#info_cliente { margin-bottom: 1em; }
+img { max-width: 8em; }
+p { text-align: right; }
+table { border-collapse:collapse;border-spacing:0; }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+}
