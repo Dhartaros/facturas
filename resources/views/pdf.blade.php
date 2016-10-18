@@ -30,7 +30,6 @@
 		</div>
 	</div>
 	<div id="concepto" class="row">
-		<?php $precio1 = $precio2 = $precio3 = 0 ?>
 		<div class="col-12">
 			<table class="tg">
 				<thead>
@@ -42,31 +41,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php $total = 0 ?>
+					@for($i = 0; $i < count($venta['conceptos']) ; $i++)
 					<tr>
-						<td class="tg-yw4l">{{$concepto['concepto1']['concepto']}}</td>
-						<td class="tg-b7b8">${{$concepto['concepto1']['precio_unitario']}}.00</td>
-						<td class="tg-yw4l">{{$concepto['concepto1']['cantidad']}}</td>
-						<?php $precio1 = $concepto['concepto1']['precio_unitario']*$concepto['concepto1']['cantidad'] ?>
-						<td class="tg-b7b8">${{$precio1}}.00</td>
+						<td class="tg-yw4l">{{$venta['conceptos'][$i]}}</td>
+						<td class="tg-b7b8">${{$venta['precios'][$i]}}.00</td>
+						<td class="tg-yw4l">{{$venta['cantidades'][$i]}}</td>
+						<?php $precio = $venta['precios'][$i]*$venta['cantidades'][$i] ?>
+						<td class="tg-b7b8">${{$precio}}.00</td>
 					</tr>
-					@if($concepto['concepto2']['concepto'] != "")
-					<tr>
-						<td class="tg-yw4l">{{$concepto['concepto2']['concepto']}}</td>
-						<td class="tg-b7b8">${{$concepto['concepto2']['precio_unitario']}}.00</td>
-						<td class="tg-yw4l">{{$concepto['concepto2']['cantidad']}}</td>
-						<?php $precio2 = $concepto['concepto2']['precio_unitario']*$concepto['concepto2']['cantidad'] ?>
-						<td class="tg-b7b8">${{$precio2}}.00</td>
-					</tr>
-					@endif
-					@if($concepto['concepto3']['concepto'] != "")
-					<tr>
-						<td class="tg-yw4l">{{$concepto['concepto3']['concepto']}}</td>
-						<td class="tg-b7b8">${{$concepto['concepto3']['precio_unitario']}}.00</td>
-						<td class="tg-yw4l">{{$concepto['concepto3']['cantidad']}}</td>
-						<?php $precio3 = $concepto['concepto3']['precio_unitario']*$concepto['concepto3']['cantidad'] ?>
-						<td class="tg-b7b8">${{$precio3}}.00</td>
-					</tr>
-					@endif
+					<?php $total = $total + $precio ?>
+					@endfor
 					<tr>
 						<td></td>
 						<td></td>
@@ -77,7 +62,6 @@
 						<td></td>
 						<td></td>
 						<td class="tg-yw4l">Total: </td>
-						<?php $total = $precio1+$precio2+$precio3 ?>
 						<td class="tg-b7b8">${{$total}}.00</td>
 					</tr>
 				</tbody>
