@@ -7,7 +7,7 @@
 	<link rel="shortcut icon" href='<?= asset("favicon.ico") ?>'>
 	<link rel="stylesheet" href='<?= asset("css/styles.css") ?>'>
 </head>
-<body class="black letras_blancas">
+<body class="polux letras_blancas">
 	<div class="row">
 		<form class="col s12" action="{{url('/recibo')}}" method="GET" novalidate>
 			<div class="row">
@@ -52,7 +52,7 @@
 					</div>
 					<div class="row right-align">
 						<a class="btn" ng-click="agregarConcepto()">Agregar concepto</a>
-						<button class="btn polux" type="submit">Terminar factura</button>
+						<button class="btn" type="submit">Terminar factura</button>
 					</div>
 				</div>
 			</div>
